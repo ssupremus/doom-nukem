@@ -111,6 +111,16 @@ void	loop(t_sdl *iw)
 // если мышь на экране сдвинулать сюда передаются значения на сколько она сдвинулась по осям
 void	mouse_move(int dx, int dy, t_sdl *iw)
 {
+	if (dx > 0)
+	{
+		iw->p.rot = (iw->p.rot >= 359) ? 1 : iw->p.rot + 1;
+		update(iw);
+	}
+	else if (dx < 0)
+	{
+		iw->p.rot = (iw->p.rot <= 1) ? 359 : iw->p.rot - 1;
+		update(iw);
+	}
 	//printf("xrel = %d yrel = %d\n", dx, dy);
 }
 
